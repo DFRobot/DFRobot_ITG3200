@@ -2,7 +2,7 @@
 
 - [中文版](./README_CN.md)
 
-DFrobot的高集成度低成本的10自由度传感器,集合了ADXL345加速度计、QMC5883L磁罗盘、ITG3205陀螺仪以及BMP280气压传感器和温度传感器。内置了低噪声的低压线性稳压器，还扩展了电源电压输入范围，支持3V-5V电源电压。同时，10自由度IMU也可以直接和Arduino控制板兼容。
+The 10 DOF(degrees of the freedom) IMU sensor is a compact and low-cost IMU from DFRobot. It integrates ADXL345 accelerometer, QMC5883L magnetometer, ITG3200 gyro, BMP280 barometric sensor and temperature sensor. This sensor embeds a low noise LDO regulator for supplying a wide range of power input, and works well with a 3V-5V power supply. Certainly, it is compatible with the Arduino board.
 
 ![正反面svg效果图](./resources/images/SEN0140.png)
 
@@ -21,7 +21,7 @@ DFrobot的高集成度低成本的10自由度传感器,集合了ADXL345加速度
 
 ## Summary
 
-这个库提供了ITG3200陀螺仪获取X,Y,Z三轴的数据的库和例程
+This library provides a routine for the ITG3200 gyro to get the data on X, Y, and Z axis.
 
 ## Installation
 
@@ -37,11 +37,11 @@ To use this library, first download the library file, paste it into the \Arduino
      * @param _Range Gyro Full Scale Range
      * @param _filterBW Digital Low Pass Filter BandWidth and SampleRate
      * @param _ClockSrc Clock Source - user parameters
-     * @param _ITGReady 使能中断寄存器
-     * @param _INTRawDataReady 使能数据准备寄存器
-     * @return bool类型，表示返回初始化的状态
-     * @retval true 初始化成功
-     * @retval false 初始化失败
+     * @param _ITGReady enable interrupt register
+     * @param _INTRawDataReady enable data ready register
+     * @return bool type, indicate returning init status
+     * @retval true init succeeded
+     * @retval false init failed
      */
     bool begin(uint8_t _SRateDiv = NOSRDIVIDER, uint8_t _Range = RANGE2000, uint8_t _filterBW = BW256_SR8, uint8_t _ClockSrc = PLL_XGYRO_REF, bool _ITGReady = true, bool _INTRawDataReady = true);
 
@@ -66,35 +66,35 @@ To use this library, first download the library file, paste it into the \Arduino
      * @fn setIntlogicLvl
      * @brief Interrupt Configuration
      * @param bool
-     * @n ACTIVE_ONHIGH 中断高电平有效
-     * @n ACTIVE_ONLOW 中断低电平有效
+     * @n ACTIVE_ONHIGH interrupt active on high
+     * @n ACTIVE_ONLOW interrupt active on low
      */
     void setIntlogicLvl(bool _State);
 
     /**
      * @fn isIntactiveOnlow
-     * @brief 模块是否是中断触发时为低电平
+     * @brief whether the module is at low level when an interrupt is triggered
      * @return bool
-     * @retval true 中断高电平有效
-     * @retval false 中断低电平有效
+     * @retval true interrupt active on high
+     * @retval false interrupt active on low
      */
     bool isIntactiveOnlow(void);
 
     /**
      * @fn setIntdriveType
-     * @brief 设置中断引脚的状态
-     * @param _State 引脚的状态
-     * @n OPEN_DRAIN 开漏输出
-     * @n PUSH_PULL 推挽输出
+     * @brief set interrupt pin status
+     * @param _State pin status
+     * @n OPEN_DRAIN open drain output
+     * @n PUSH_PULL push pull output
      */
     void setIntdriveType(bool _State);
 
     /**
      * @fn isIntopenDrain
-     * @brief 中断引脚是否是开漏输出
+     * @brief whether the interrupt pin is open drain output
      * @return bool
-     * @retval true 是
-     * @retval false 否
+     * @retval true yes
+     * @retval false no
      */
     bool isIntopenDrain(void);
 
@@ -102,8 +102,8 @@ To use this library, first download the library file, paste it into the \Arduino
      * @fn setItgready
      * @brief if enable interrupt when device is ready (PLL ready after changing clock source)
      * @param _State
-     * @n     true   打开
-     * @n     false  关闭
+     * @n     true   enable
+     * @n     false  disable
      */
     void setItgready(bool _State);
 
@@ -117,26 +117,26 @@ To use this library, first download the library file, paste it into the \Arduino
 
     /**
      * @fn isItgready
-     * @brief 中断是否使能
+     * @brief whether to enable or disable interrupt
      * @return bool
-     * @retval true 使能
-     * @retval false 不使能
+     * @retval true enable
+     * @retval false disable
      */
     bool isItgready(void);
 
     /**
      * @fn isRawdataReady
-     * @brief 原始数据是否准备好
+     * @brief whether the raw data has been ready
      * @return bool
-     * @retval true 已经准备好
-     * @retval false 没有准备好
+     * @retval true yes 
+     * @retval false no
      */
     bool isRawdataReady(void);
 
     /**
      * @fn readTemp
-     * @brief 获取板子温度
-     * @param _Temp 存储温度
+     * @brief Get board temp
+     * @param _Temp Save the temp
      */
     void readTemp(float *_Temp);
 
@@ -172,17 +172,17 @@ To use this library, first download the library file, paste it into the \Arduino
 
     /**
      * @fn isLowpower
-     * @brief 查看传感器是否处于低功耗模式
+     * @brief Check if the sensor is in low power mode
      * @return bool
-     * @retval true 是
-     * @retval false 否
+     * @retval true yes
+     * @retval false no
      */
     bool isLowpower(void);
 
     /**
      * @fn setPowerMode
-     * @brief 设置功耗模式
-     * @param _State 模式选择
+     * @brief Set power mode
+     * @param _State mode select
      * @n     NORMAL
      * @n     STANDBY
      */
@@ -190,75 +190,75 @@ To use this library, first download the library file, paste it into the \Arduino
 
     /**
      * @fn isXgyroStandby
-     * @brief 陀螺仪X方向上的数据是否已经准备好
+     * @brief whether the data on the X-axis of the gyro is ready 
      * @return bool
-     * @retval true 准备好了
-     * @retval false 没准备好
+     * @retval true it is 
+     * @retval false it isn't
      */
     bool isXgyroStandby(void);
 
     /**
      * @fn isYgyroStandby
-     * @brief 陀螺仪Y方向上的数据是否已经准备好
+     * @brief whether the data on the Y-axis of the gyro is ready
      * @return bool
-     * @retval true 准备好了
-     * @retval false 没准备好
+     * @retval true it is
+     * @retval false it isn't
      */
     bool isYgyroStandby(void);
 
     /**
      * @fn isZgyroStandby
-     * @brief 陀螺仪Z方向上的数据是否已经准备好
+     * @brief whether the data on the Z-axis of the gyro is ready
      * @return bool
-     * @retval true 没准备好
-     * @retval false 没准备好
+     * @retval true it is
+     * @retval false it isn't
      */
     bool isZgyroStandby(void);
 
     /**
      * @fn setXgyroStandby
-     * @brief 设置X方向待机模式，待机模式将不会获取X方向的数据
+     * @brief set X-axis standby mode, the data on the X-axis will not be obtained in standby mode
      * @param _Status
-     * @n     NORMAL 使能
-     * @n     STANDBY 不使能
+     * @n     NORMAL enable
+     * @n     STANDBY disable
      */
     void setXgyroStandby(bool _Status);
 
     /**
      * @fn setYgyroStandby
-     * @brief 设置Y方向待机模式，待机模式将不会获取X方向的数据
+     * @brief set Y-axis standby mode, the data on the Y-axis will not be obtained in standby mode
      * @param _Status
-     * @n     NORMAL 使能
-     * @n     STANDBY 不使能
+     * @n     NORMAL enable
+     * @n     STANDBY disable
      */
     void setYgyroStandby(bool _Status);
 
     /**
      * @fn setZgyroStandby
-     * @brief 设置Z方向待机模式，待机模式将不会获取X方向的数据
+     * @brief set Z-axis standby mode, the data on the Z-axis will not be obtained in standby mode
      * @param _Status
-     * @n     NORMAL 使能
-     * @n     STANDBY 不使能
+     * @n     NORMAL enable
+     * @n     STANDBY disable
      */
     void setZgyroStandby(bool _Status);
 
     /**
      * @fn setFilterBW
-     * @brief 设置滤波器带宽
-     * @param _BW 带宽
+     * @brief set filter bandwidth
+     * @param _BW bandwidth
      */
     void setFilterBW(uint8_t _BW);
 
     /**
      * @fn getFilterBW
-     * @brief 获取滤波器带宽
+     * @brief get filter bandwidth
      * @return uint8_t
      */
     uint8_t getFilterBW(void);
 
     /**
      * @fn getFSrange
-     * @brief 获取陀螺仪量程
+     * @brief get gyroscope range
      * @return uint8_t
      */
     uint8_t getFSrange(void);
@@ -281,7 +281,7 @@ To use this library, first download the library file, paste it into the \Arduino
 
     /**
      * @fn getClocksource
-     * @brief 获取时钟源
+     * @brief Get clock source
      * @return uint8_t
      */
     uint8_t getClocksource(void);
@@ -290,7 +290,7 @@ To use this library, first download the library file, paste it into the \Arduino
 
 ## Compatibility
 
-主板               | 通过  | 未通过   | 未测试   | 备注
+MCU               | Work Well  | Work Wrong   | Untested   | Remarks
 ------------------ | :----------: | :----------: | :---------: | -----
 Arduino uno        |      √       |              |             | 
 Mega2560        |      √       |              |             | 
@@ -301,7 +301,7 @@ Micro:bit           |      √       |              |             |
 
 ## History
 
-- 2022/3/2 - 2.0.0 版本
+- 2022/3/2 - 2.0.0 Version
 
 ## Credits
 

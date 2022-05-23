@@ -1,6 +1,6 @@
 /*!
  * @file DFRobot_ITG3200.h
- * @brief 一个陀螺仪传感器库
+ * @brief A gyro sensor library
  * @copyright	Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license     The MIT License (MIT)
  * @author PengKaixing(kaixing.peng@dfrobot.com)
@@ -95,11 +95,11 @@ class DFRobot_ITG3200{
      * @param _Range Gyro Full Scale Range
      * @param _filterBW Digital Low Pass Filter BandWidth and SampleRate
      * @param _ClockSrc Clock Source - user parameters
-     * @param _ITGReady 使能中断寄存器
-     * @param _INTRawDataReady 使能数据准备寄存器
-     * @return bool类型，表示返回初始化的状态
-     * @retval true 初始化成功
-     * @retval false 初始化失败
+     * @param _ITGReady Enable interrupt register
+     * @param _INTRawDataReady Enable data ready register
+     * @return bool type, indicate returning init status
+     * @retval true Init succeeded
+     * @retval false Init failed
      */
     bool begin(uint8_t _SRateDiv = NOSRDIVIDER, uint8_t _Range = RANGE2000, uint8_t _filterBW = BW256_SR8, uint8_t _ClockSrc = PLL_XGYRO_REF, bool _ITGReady = true, bool _INTRawDataReady = true);
 
@@ -124,44 +124,44 @@ class DFRobot_ITG3200{
      * @fn setIntlogicLvl
      * @brief Interrupt Configuration
      * @param bool
-     * @n ACTIVE_ONHIGH 中断高电平有效
-     * @n ACTIVE_ONLOW 中断低电平有效
+     * @n ACTIVE_ONHIGH Interrupt active on high
+     * @n ACTIVE_ONLOW Interrupt active on low
      */
     void setIntlogicLvl(bool _State);
 
     /**
      * @fn isIntactiveOnlow
-     * @brief 模块是否是中断触发时为低电平
+     * @brief whether the module is at low level when an interrupt is triggered
      * @return bool
-     * @retval true 中断高电平有效
-     * @retval false 中断低电平有效
+     * @retval true Interrupt active on high
+     * @retval false Interrupt active on low
      */
     bool isIntactiveOnlow(void);
 
     /**
      * @fn setIntdriveType
-     * @brief 设置中断引脚的状态
-     * @param _State 引脚的状态
-     * @n OPEN_DRAIN 开漏输出
-     * @n PUSH_PULL 推挽输出
+     * @brief Set interrupt pin status
+     * @param _State pin status
+     * @n OPEN_DRAIN Open drain output
+     * @n PUSH_PULL Push pull output
      */
     void setIntdriveType(bool _State);
 
     /**
      * @fn isIntopenDrain
-     * @brief 中断引脚是否是开漏输出
+     * @brief Whether the interrupt pin is open drain output
      * @return bool
-     * @retval true 是
-     * @retval false 否
+     * @retval true yes
+     * @retval false no
      */
     bool isIntopenDrain(void);
 
     /**
      * @fn setItgready
-     * @brief if enable interrupt when device is ready (PLL ready after changing clock source)
+     * @brief If enable interrupt when device is ready (PLL ready after changing clock source)
      * @param _State
-     * @n     true   打开
-     * @n     false  关闭
+     * @n     true   enable
+     * @n     false  disable
      */
     void setItgready(bool _State);
 
@@ -175,26 +175,26 @@ class DFRobot_ITG3200{
 
     /**
      * @fn isItgready
-     * @brief 中断是否使能
+     * @brief whether to enable or disable interrupt
      * @return bool
-     * @retval true 使能
-     * @retval false 不使能
+     * @retval true enable
+     * @retval false disable
      */
     bool isItgready(void);
 
     /**
      * @fn isRawdataReady
-     * @brief 原始数据是否准备好
+     * @brief whether the raw data is ready
      * @return bool
-     * @retval true 已经准备好
-     * @retval false 没有准备好
+     * @retval true yes
+     * @retval false no
      */
     bool isRawdataReady(void);
 
     /**
      * @fn readTemp
-     * @brief 获取板子温度
-     * @param _Temp 存储温度
+     * @brief Get board temp
+     * @param _Temp save the temp
      */
     void readTemp(float *_Temp);
 
@@ -230,17 +230,17 @@ class DFRobot_ITG3200{
 
     /**
      * @fn isLowpower
-     * @brief 查看传感器是否处于低功耗模式
+     * @brief Check if the sensor is in low power mode
      * @return bool
-     * @retval true 是
-     * @retval false 否
+     * @retval true yes
+     * @retval false no
      */
     bool isLowpower(void);
 
     /**
      * @fn setPowerMode
-     * @brief 设置功耗模式
-     * @param _State 模式选择
+     * @brief set power mode
+     * @param _State mode select
      * @n     NORMAL
      * @n     STANDBY
      */
@@ -248,75 +248,75 @@ class DFRobot_ITG3200{
 
     /**
      * @fn isXgyroStandby
-     * @brief 陀螺仪X方向上的数据是否已经准备好
+     * @brief whether the data on the X-axis of the gyro is ready
      * @return bool
-     * @retval true 准备好了
-     * @retval false 没准备好
+     * @retval true yes
+     * @retval false no
      */
     bool isXgyroStandby(void);
 
     /**
      * @fn isYgyroStandby
-     * @brief 陀螺仪Y方向上的数据是否已经准备好
+     * @brief whether the data on the Y-axis of the gyro is ready
      * @return bool
-     * @retval true 准备好了
-     * @retval false 没准备好
+     * @retval true yes
+     * @retval false no
      */
     bool isYgyroStandby(void);
 
     /**
      * @fn isZgyroStandby
-     * @brief 陀螺仪Z方向上的数据是否已经准备好
+     * @brief whether the data on the Z-axis of the gyro is ready
      * @return bool
-     * @retval true 没准备好
-     * @retval false 没准备好
+     * @retval true yes
+     * @retval false no
      */
     bool isZgyroStandby(void);
 
     /**
      * @fn setXgyroStandby
-     * @brief 设置X方向待机模式，待机模式将不会获取X方向的数据
+     * @brief set X-axis standby mode, the data on the X-axis will not be obtained in standby mode
      * @param _Status
-     * @n     NORMAL 使能
-     * @n     STANDBY 不使能
+     * @n     NORMAL enable
+     * @n     STANDBY disable
      */
     void setXgyroStandby(bool _Status);
 
     /**
      * @fn setYgyroStandby
-     * @brief 设置Y方向待机模式，待机模式将不会获取X方向的数据
+     * @brief set Y-axis standby mode, the data on the Y-axis will not be obtained in standby mode
      * @param _Status
-     * @n     NORMAL 使能
-     * @n     STANDBY 不使能
+     * @n     NORMAL enable
+     * @n     STANDBY disable
      */
     void setYgyroStandby(bool _Status);
 
     /**
      * @fn setZgyroStandby
-     * @brief 设置Z方向待机模式，待机模式将不会获取X方向的数据
+     * @brief set Z-axis standby mode, the data on the Z-axis will not be obtained in standby mode
      * @param _Status
-     * @n     NORMAL 使能
-     * @n     STANDBY 不使能
+     * @n     NORMAL enable
+     * @n     STANDBY disable
      */
     void setZgyroStandby(bool _Status);
 
     /**
      * @fn setFilterBW
-     * @brief 设置滤波器带宽
-     * @param _BW 带宽
+     * @brief set filter bandwidth
+     * @param _BW bandwidth
      */
     void setFilterBW(uint8_t _BW);
 
     /**
      * @fn getFilterBW
-     * @brief 获取滤波器带宽
+     * @brief get filter bandwidth
      * @return uint8_t
      */
     uint8_t getFilterBW(void);
 
     /**
      * @fn getFSrange
-     * @brief 获取陀螺仪量程
+     * @brief get gyro range
      * @return uint8_t
      */
     uint8_t getFSrange(void);
@@ -339,7 +339,7 @@ class DFRobot_ITG3200{
 
     /**
      * @fn getClocksource
-     * @brief 获取时钟源
+     * @brief Get clock source
      * @return uint8_t
      */
     uint8_t getClocksource(void);

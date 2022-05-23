@@ -1,6 +1,6 @@
 /*!
  * @file getGyroscopedata.ino
- * @brief 这是一个测试例程，可以用来获取陀螺仪数据
+ * @brief This is a test routine that can be used to obtain gyro data
  * @copyright	Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license     The MIT License (MIT)
  * @author PengKaixing(kaixing.peng@dfrobot.com)
@@ -21,32 +21,32 @@ void setup(void)
   gyro.begin();
   gyro.reset();
   /**
-   * @brief 设置陀螺仪采样率
-   * @n     采样率 = 1kHz / (7 + 1) = 125Hz
+   * @brief set gyro sampling rate
+   * @n     Sampling rate = 1kHz / (7 + 1) = 125Hz
    */
   // gyro.setSamplerateDiv(/*Sample rate divider*/7);
   /**
-   * @brief 获取陀螺仪采样率
+   * @brief get gyro sampling rate
    */
   // gyro.getSamplerateDiv();
 
   /**
-   * @brief 设置中断触发时，中断引脚的电平
+   * @brief set the interrupt pin level when an interrupt is triggered
    */
   // gyro.setIntlogicLvl(false);
   /**
-   * @brief 查看中断触发时，中断引脚的电平是否是低电平
+   * @brief Check if the interrupt pin is at low level when an interrupt is triggered
    */
   // gyro.isIntactiveOnlow();
 
   /**
-   * @brief 设置中断引脚的状态
+   * @brief set interrupt pin status
    * @n     OPEN_DRAIN
    * @n     PUSH_PULL 
    */
   // gyro.setIntdriveType(OPEN_DRAIN);
   /**
-   * @brief 中断引脚是否是开漏输出
+   * @brief whether the interrupt pin is open drain output
    */
   // gyro.isIntopenDrain();
 

@@ -1,6 +1,6 @@
 /*!
  * @file DFRobot_ITG3200.cpp
- * @brief 一个陀螺仪传感器库
+ * @brief A gyro sensor library
  * @copyright	Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license     The MIT License (MIT)
  * @author PengKaixing(kaixing.peng@dfrobot.com)
